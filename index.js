@@ -50,15 +50,15 @@ alexaApp.intent("GetNextEvent", {
     "was steht an"
   ]
 },
-  function (request, response) {
+  function (req, res) {
     request("http://mv-schwieberdingen.de/wp-json/events/v1/next", (error, httpresponse, events) => {
       if (error) {
-        response.say("Die Abfrage ist fehlgeschlagen");
+        res.say("Die Abfrage ist fehlgeschlagen");
       } else {
         console.log('statusCode:', httpresponse && httpresponse.statusCode); // Print the response status code if a response was received
         events = JSON.parse(events);
         //console.log(events[0].post_title);
-        response.say("Die nächste Veranstaltung ist ");
+        res.say("Die nächste Veranstaltung ist ");
       }
     });
   }
