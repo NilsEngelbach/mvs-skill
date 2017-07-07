@@ -40,7 +40,12 @@ alexaApp.launch(function(request, response) {
 alexaApp.intent("GetNextEvent", {
     "utterances": [
       "wann ist die nächste Veranstaltung",
+      "wann findet die nächste Veranstaltung statt",
       "wann ist das nächste Konzert",
+      "wann findet das nächste Konzert statt",
+      "wann das nächste Konzert ist",
+      "wann die nächste Veranstaltung ist",
+      "wann findet das nächste Event statt",
       "was steht an"
     ]
   },
