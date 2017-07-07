@@ -58,7 +58,7 @@ alexaApp.intent("GetNextEvent", {
       })
       .catch(function (err) {
         // API call failed...
-        response.say("Veranstaltungen konnten nicht abgerufen werden.");
+        response.say("Es tut uns leid, die Veranstaltungen konnten nicht abgerufen werden.");
       });
   }
 );
