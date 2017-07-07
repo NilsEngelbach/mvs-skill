@@ -1,5 +1,5 @@
 var express = require("express");
-var request = require("request");
+var api = require("request");
 var alexa = require("alexa-app");
 
 var PORT = process.env.PORT || 8080;
@@ -15,11 +15,11 @@ alexaApp.express({
   // verifies requests come from amazon alexa. Must be enabled for production.
   // You can disable this if you're running a dev environment and want to POST
   // things to test behavior. enabled by default.
-  checkCert: false,
+  checkCert: true,
 
   // sets up a GET route when set to true. This is handy for testing in
   // development, but not recommended for production. disabled by default
-  debug: true
+  debug: false
 });
 
 // now POST calls to /test in express will be handled by the app.request() function
@@ -50,8 +50,8 @@ alexaApp.intent("GetNextEvent", {
     "was steht an"
   ]
 },
- (req, response) => {
-    request("http://mv-schwieberdingen.de/wp-json/events/v1/next", (error, httpresponse, events) => {
+ (request, response) => {
+    api("http://mv-schwieberdingen.de/wp-json/events/v1/next", (error, httpresponse, events) => {
       // if (error) {
       //   response.say("Die Abfrage ist fehlgeschlagen");
       // } else {
@@ -62,34 +62,5 @@ alexaApp.intent("GetNextEvent", {
     });
   }
 );
-
-// alexaApp.intent("AMAZON.HelpIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var helpOutput = "Um die nächste Veranstaltung abzurufen frage einfach 'Musikverein Schwieberdinen was steht an'.";
-//   	var reprompt = "wie kann ich dir jetzt weiterhelfen?";
-//   	// AMAZON.HelpIntent must leave session open -> .shouldEndSession(false)
-//   	response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
-//   	return
-// });
-
-// alexaApp.intent("AMAZON.StopIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var stopOutput = "Wir sehen uns!";
-//   	response.say(stopOutput)
-//   	return
-// });
-
-// alexaApp.intent("AMAZON.CancelIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var cancelOutput = "Vielleicht beim nächsten mal.";
-//   	response.say(cancelOutput);
-//   	return
-// });
 
 app.listen(PORT, () => console.log("Listening on port " + PORT + "."));
