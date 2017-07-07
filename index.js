@@ -33,23 +33,23 @@ app.set("view engine", "ejs");
 //   }
 // };
 
-alexaApp.launch(function(request, response) {
+alexaApp.launch(function (request, response) {
   response.say("You launched the app!");
 });
 
 alexaApp.intent("GetNextEvent", {
-    "utterances": [
-      "wann ist die nächste Veranstaltung",
-      "wann findet die nächste Veranstaltung statt",
-      "wann ist das nächste Konzert",
-      "wann findet das nächste Konzert statt",
-      "wann das nächste Konzert ist",
-      "wann die nächste Veranstaltung ist",
-      "wann findet das nächste Event statt",
-      "was steht an"
-    ]
-  },
-  function(request, response) {
+  "utterances": [
+    "wann ist die nächste Veranstaltung",
+    "wann findet die nächste Veranstaltung statt",
+    "wann ist das nächste Konzert",
+    "wann findet das nächste Konzert statt",
+    "wann das nächste Konzert ist",
+    "wann die nächste Veranstaltung ist",
+    "wann findet das nächste Event statt",
+    "was steht an"
+  ]
+},
+  function (request, response) {
     response.say("Die nächste Veranstaltung ist:");
   }
 );
