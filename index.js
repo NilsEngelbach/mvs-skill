@@ -58,7 +58,7 @@ alexaApp.intent("GetNextEvent", {
         console.log('statusCode:', httpresponse && httpresponse.statusCode); // Print the response status code if a response was received
         events = JSON.parse(events);
         //console.log(events[0].post_title);
-        response.say("Die nächste Veranstaltung ist " + events[0].post_title);
+        response.say("Die nächste Veranstaltung ist ");
       }
     });
   }
