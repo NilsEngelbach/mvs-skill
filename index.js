@@ -26,6 +26,13 @@ alexaApp.express({
 // from here on you can setup any other express routes or middlewares as normal
 app.set("view engine", "ejs");
 
+alexaApp.pre = function(request, response, type) {
+  if (request.applicationId != "amzn1.ask.skill.43cdc88b-cff1-4cd3-840c-6872b9557566") {
+    // fail ungracefully
+    return response.fail("Invalid applicationId");
+  }
+};
+
 alexaApp.launch(function(request, response) {
   response.say("You launched the app!");
 });
@@ -42,7 +49,7 @@ alexaApp.intent("GetNextEvent", {
   }
 );
 
-app.intent("AMAZON.HelpIntent",{
+alexaApp.intent("AMAZON.HelpIntent",{
   "slots": {},
   "utterances": []
 }, function(request, response) {
@@ -53,7 +60,7 @@ app.intent("AMAZON.HelpIntent",{
   	return
 });
 
-app.intent("AMAZON.StopIntent",{
+alexaApp.intent("AMAZON.StopIntent",{
   "slots": {},
   "utterances": []
 }, function(request, response) {
@@ -62,7 +69,7 @@ app.intent("AMAZON.StopIntent",{
   	return
 });
 
-app.intent("AMAZON.CancelIntent",{
+alexaApp.intent("AMAZON.CancelIntent",{
   "slots": {},
   "utterances": []
 }, function(request, response) {
