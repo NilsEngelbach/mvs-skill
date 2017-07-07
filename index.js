@@ -50,38 +50,8 @@ alexaApp.intent("GetNextEvent", {
     ]
   },
   function(request, response) {
-    http://mv-schwieberdingen.de/wp-json/events/v1/next
     response.say("Die nächste Veranstaltung ist:");
   }
 );
-
-// alexaApp.intent("AMAZON.HelpIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var helpOutput = "Um die nächste Veranstaltung abzurufen frage einfach 'Musikverein Schwieberdinen was steht an'.";
-//   	var reprompt = "wie kann ich dir jetzt weiterhelfen?";
-//   	// AMAZON.HelpIntent must leave session open -> .shouldEndSession(false)
-//   	response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
-//   	return
-// });
-
-// alexaApp.intent("AMAZON.StopIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var stopOutput = "Wir sehen uns!";
-//   	response.say(stopOutput)
-//   	return
-// });
-
-// alexaApp.intent("AMAZON.CancelIntent",{
-//   "slots": {},
-//   "utterances": []
-// }, function(request, response) {
-//   	var cancelOutput = "Vielleicht beim nächsten mal.";
-//   	response.say(cancelOutput);
-//   	return
-// });
 
 app.listen(PORT, () => console.log("Listening on port " + PORT + "."));
