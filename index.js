@@ -52,13 +52,13 @@ alexaApp.intent("GetNextEvent", {
 },
  (req, response) => {
     request("http://mv-schwieberdingen.de/wp-json/events/v1/next", (error, httpresponse, events) => {
-      if (error) {
-        response.say("Die Abfrage ist fehlgeschlagen");
-      } else {
-        events = JSON.parse(events);
-        //console.log(events[0].post_title);
+      // if (error) {
+      //   response.say("Die Abfrage ist fehlgeschlagen");
+      // } else {
+      //   events = JSON.parse(events);
+      //   //console.log(events[0].post_title);
         response.say("Die nächste Veranstaltung ist");
-      }
+      // }
     });
   }
 );
