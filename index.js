@@ -1,5 +1,5 @@
 var express = require("express");
-var api = requrie("request");
+var api = require("request");
 var alexa = require("alexa-app");
 
 var PORT = process.env.PORT || 8080;
