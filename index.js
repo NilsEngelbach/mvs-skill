@@ -1,5 +1,5 @@
 var express = require("express");
-var request = require('request');
+var request = require("request");
 var alexa = require("alexa-app");
 
 var PORT = process.env.PORT || 8080;
@@ -51,11 +51,11 @@ alexaApp.intent("GetNextEvent", {
   ]
 },
   function (request, response) {
-    request("http://mv-schwieberdingen.de/wp-json/events/v1/next", function (error, response, events) {
+    request("http://mv-schwieberdingen.de/wp-json/events/v1/next", function (error, httpresponse, events) {
       if (error) {
         response.say("Die Abfrage ist fehlgeschlagen");
       } else {
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('statusCode:', httpresponse && httpresponse.statusCode); // Print the response status code if a response was received
         events = JSON.parse(events);
         //console.log(events[0].post_title);
         response.say("Die nächste Veranstaltung ist '" + events[0].post_title + "'. Sie findet am " + events[0].EventStartDate + " statt.");
