@@ -50,7 +50,7 @@ alexaApp.intent("GetNextEvent", {
     "was steht an"
   ]
 },
-  function (req, response) {
+ (req, response) => {
     request("http://mv-schwieberdingen.de/wp-json/events/v1/next", (error, httpresponse, events) => {
       if (error) {
         response.say("Die Abfrage ist fehlgeschlagen");
