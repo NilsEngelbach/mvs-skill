@@ -51,14 +51,14 @@ alexaApp.intent("GetNextEvent", {
   ]
 },
   function (request, response) {
-
     return rp("http://mv-schwieberdingen.de/wp-json/events/v1/next")
-      .then(function (repos) {
-        console.log(repos);
-        response.say("Die nächste Veranstaltung ist:");
+      .then(function (events) {
+        var event = JSON.parse(events)[0];
+        response.say("Die nächste Veranstaltung ist '" +  event.post_title + "'. Sie findet am " + event.EventStartDate + " statt.");
       })
       .catch(function (err) {
         // API call failed...
+        response.say("Veranstaltungen konnten nicht abgerufen werden.");
       });
   }
 );
