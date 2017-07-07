@@ -1,5 +1,5 @@
 var express = require("express");
-var api = require("request");
+var rp = require('request-promise');
 var alexa = require("alexa-app");
 
 var PORT = process.env.PORT || 8080;
@@ -51,9 +51,15 @@ alexaApp.intent("GetNextEvent", {
   ]
 },
   function (request, response) {
-    return api.get("http://mv-schwieberdingen.de/wp-json/events/v1/next", {}, () => {
+
+    return rp("http://mv-schwieberdingen.de/wp-json/events/v1/next")
+      .then(function (repos) {
+        console.log(repos);
         response.say("Die nächste Veranstaltung ist:");
-    });
+      })
+      .catch(function (err) {
+        // API call failed...
+      });
   }
 );
 
