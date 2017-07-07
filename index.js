@@ -38,7 +38,7 @@ alexaApp.intent("GetNextEvent", {
     ]
   },
   function(request, response) {
-    response.say("Success!");
+    response.say("Die nächste Veranstaltung ist:");
   }
 );
 
