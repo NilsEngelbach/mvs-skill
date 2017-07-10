@@ -41,6 +41,12 @@ alexaApp.launch(function (request, response) {
   response.say("Herzlich Willkommen beim Musikverein Schwieberdingen. Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen 'was steht an?' und 'wann ist die nächste Veranstaltung?' kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Viel Spaß!");
 });
 
+alexaApp.sessionEnded(function(request, response) {
+  // cleanup the user's server-side session
+  logout(request.userId);
+  // no response required
+});
+
 alexaApp.intent("GetNextEvent", {
   "utterances": [
     "wann ist die nächste Veranstaltung",
@@ -58,7 +64,7 @@ alexaApp.intent("GetNextEvent", {
       .then(function (events) {
         var event = JSON.parse(events)[0];
         var time = moment(event.EventStartDate, 'YYYY-MM-DD HH:mm:ss'); // 2017-07-08 09:30:00
-        response.say("Die nächste Veranstaltung ist '" +  event.post_title + "'. Sie findet am " + time.format('LLLL') + " statt.");
+        response.say("Die nächste Veranstaltung ist '" +  event.post_title + "'. Sie findet am " + time.format('dddd') + ', ' + time.format('LL') + " statt.");
       })
       .catch(function (err) {
         // API call failed...
