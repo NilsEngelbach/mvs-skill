@@ -38,7 +38,7 @@ app.pre = function(request, response, type) {
 };
 
 alexaApp.launch(function (request, response) {
-  response.say("Herzlich Willkommen beim Musikverein Schwieberdingen. Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen 'was steht an?' und 'wann ist die nächste Veranstaltung?' kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Viel Spaß!");
+  response.say("Herzlich Willkommen beim Musikverein Schwieberdingen. Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen 'was steht an?' und 'wann ist die nächste Veranstaltung?' kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Viel Spaß!").shouldEndSession(false);
 });
 
 alexaApp.sessionEnded(function(request, response) {
