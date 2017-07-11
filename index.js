@@ -38,7 +38,7 @@ app.pre = function(request, response, type) {
 };
 
 alexaApp.launch(function (request, response) {
-  response.say("Herzlich Willkommen beim Musikverein Schwieberdingen. Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen 'was steht an?' und 'wann ist die nächste Veranstaltung?' kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Viel Spaß!").shouldEndSession(false);
+  response.say("Herzlich Willkommen beim Musikverein Schwieberdingen. Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen Was steht an und Wann ist die nächste Veranstaltung kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Viel Spaß!").shouldEndSession(false);
 });
 
 alexaApp.sessionEnded(function(request, response) {
@@ -64,7 +64,7 @@ alexaApp.intent("GetNextEvent", {
       .then(function (events) {
         var event = JSON.parse(events)[0];
         var time = moment(event.EventStartDate, 'YYYY-MM-DD HH:mm:ss'); // 2017-07-08 09:30:00
-        response.say("Die nächste Veranstaltung ist '" +  event.post_title + "'. Sie findet am " + time.format('dddd') + ', ' + time.format('LL') + " statt.");
+        response.say("Die nächste Veranstaltung ist " +  event.post_title + ". Sie findet am " + time.format('dddd') + ', ' + time.format('LL') + " statt.");
       })
       .catch(function (err) {
         // API call failed...
@@ -72,5 +72,33 @@ alexaApp.intent("GetNextEvent", {
       });
   }
 );
+
+alexaApp.intent("AMAZON.HelpIntent",{
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var helpOutput = "Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen Was steht an und Wann ist die nächste Veranstaltung kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Mit den Befehlen Abbrechen und Stopp kannst du die Ansage beenden.";
+  	var reprompt = "Also, wie können wir dir helfen?";
+  	response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
+  	return
+});
+
+alexaApp.intent("AMAZON.StopIntent", {
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var stopOutput = "Musikalische Grüße vom MVS. Wir sehen uns, bis bald!";
+  	response.say(stopOutput)
+  	return
+});
+
+alexaApp.intent("AMAZON.CancelIntent", {
+  "slots": {},
+  "utterances": []
+}, function(request, response) {
+  	var cancelOutput = "Musikalische Grüße vom MVS. Tschau ge`!";
+  	response.say(cancelOutput);
+  	return
+});
 
 app.listen(PORT, () => console.log("Listening on port " + PORT + "."));
