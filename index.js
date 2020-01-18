@@ -73,7 +73,7 @@ alexaApp.intent("GetNextEvent", {
           }
 
           if (event.venue && event.venue.venue && event.venue.city) {
-            answer = answer + "Wie sehen uns dann in " + event.venue.city + " - " + event.venue.venue + ". #bockstark";
+            answer = answer + "Wir sehen uns dann in " + event.venue.city + " - " + event.venue.venue + ". #bockstark";
           }
 
           response.say(answer);
