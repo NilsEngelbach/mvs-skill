@@ -62,8 +62,9 @@ alexaApp.intent("GetNextEvent", {
   function (request, response) {
     return rp("https://mv-schwieberdingen.de/wp-json/tribe/events/v1/events") // "http://mv-schwieberdingen.de/wp-json/events/v1/next"
       .then(function (res) {
+        res = JSON.parse(res);
         if(res.events) {
-          var event = JSON.parse(res.events)[0];
+          var event = res.events[0];
           var answer = "Die nächste Veranstaltung ist " +  event.title + ".";
 
           if (event.start_date) {
