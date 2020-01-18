@@ -92,7 +92,7 @@ alexaApp.intent("AMAZON.HelpIntent",{
   "slots": {},
   "utterances": []
 }, function(request, response) {
-  	var helpOutput = "Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen Was steht an und Wann ist die nächste Veranstaltung kannst du die Abfrage starten. Weitere Funktionen werden nach und nach nachgerüstet. Mit den Befehlen Abbrechen und Stopp kannst du die Ansage beenden.";
+  	var helpOutput = "Momentan können wir dir einen Ausblick auf unsere nächsten Veranstaltungen geben. Mit der Fragen Was steht an und Wann ist die nächste Veranstaltung kannst du die Abfrage starten. Weitere Funktionen werden mit der Zeit nachgerüstet. Mit den Befehlen Abbrechen und Stopp kannst du die Ansage beenden.";
   	var reprompt = "Also, wie können wir dir helfen?";
   	response.say(helpOutput).reprompt(reprompt).shouldEndSession(false);
   	return
