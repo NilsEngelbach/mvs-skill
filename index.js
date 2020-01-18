@@ -65,15 +65,15 @@ alexaApp.intent("GetNextEvent", {
         res = JSON.parse(res);
         if(res.events) {
           var event = res.events[0];
-          var answer = "Die nächste Veranstaltung ist " +  event.title + ".";
+          var answer = "Die nächste Veranstaltung ist " +  event.title + ". ";
 
           if (event.start_date) {
             var time = moment(event.start_date, 'YYYY-MM-DD HH:mm:ss'); // 2017-07-08 09:30:00
-            answer = answer + "Sie findet am " + time.format('dddd') + ', ' + time.format('LL') + " statt."
+            answer = answer + "Sie findet am " + time.format('dddd') + ', ' + time.format('LL') + " statt. "
           }
 
           if (event.venue && event.venue.venue && event.venue.city) {
-            answer = answer + "Wie sehen uns dann in " + event.venue.city + " - " + event.venue.venue;
+            answer = answer + "Wie sehen uns dann in " + event.venue.city + " - " + event.venue.venue + ". #bockstark";
           }
 
           response.say(answer);
