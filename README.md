@@ -1,38 +1,25 @@
-# alexa-app-example
+# Alexa Skill for [Musikverein Schwieberdingen](https://mv-schwieberdingen.de)
 
-An example Alexa Skill project using the [alexa-app](https://github.com/alexa-js/alexa-app) module with Express.
+> Alexa frage "Musikverein Schwieberdingen" was steht an?
 
-## Deploying locally
+> Alexa frage "Musikverein Schwieberdingen" wann ist die nächste Veranstaltung?
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+
+The website of Musikverein Schwieberdingen provides an REST API to fetch the next events (concerts etc.).  
+This skill queries this REST API and provides the next event/concert to the user via an convenient amazon alexa skill.
+
+The skill is using the [alexa-app](https://github.com/alexa-js/alexa-app) module with Express.
+
+## Deploy/develop locally
+
+Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
-git clone git@github.com:alexa-js/alexa-app-example.git # or clone your own fork
-cd alexa-app-example
+git clone https://github.com/NilsEngelbach/mvs-skill.git
+cd mvs-skill
 npm install
-npm start
+npm start # or `npm start-dev` for server with file watcher
 ```
 
 Your app should now be running on *[http://localhost:8080](http://localhost:8080)*.
-
-### Testing it
-
-You can access a test page to verify if the basic setup is working fine: *[http://localhost:8080/test](http://localhost:8080/test)*.
-
-## Deploying to Heroku
-
-```sh
-heroku create
-git push heroku master
-heroku open
-```
-
-Alternatively, you can deploy your own copy of the app using this button:
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/alexa-js/alexa-app-example)
-
-Your app should now be running on *https://`<app-name>`.herokuapp.com*, where `<app-name>` is the heroku app name.
-
-### Testing it
-
-You can access a test page to verify if the basic setup is working fine: *https://`<app-name>`.herokuapp.com/test*.
+You can access a test page to verify if the basic setup is working fine: *[http://localhost:8080/mvs-skill](http://localhost:8080/mvs-skill)*.
