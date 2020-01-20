@@ -10,6 +10,14 @@ This skill queries this REST API and provides the next event/concert to the user
 
 The skill is using the [alexa-app](https://github.com/alexa-js/alexa-app) module with Express.
 
+## Configuration
+
+Create `.env` file with amazon skill id and optional development flag:
+```
+skillId=<amazon-skill-id>
+development=true
+```
+
 ## Deploy/develop locally
 
 Make sure you have [Node.js](http://nodejs.org/) installed.
